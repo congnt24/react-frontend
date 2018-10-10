@@ -1,0 +1,48 @@
+@import './variables';
+.flexContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.flexItem {
+  padding: 5px;
+}
+
+.copyRight {
+  background-color: $primary-color;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  color: $text-inverse-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whiteIcon {
+  color: #fff !important;
+}
+
+.footer {
+  background-color: $primary-color;
+  height: 60px;
+  width: 100%;
+  text-align: center;
+  color: $text-inverse-color;
+  clear: both;
+  display: table;
+  position: absolute;
+}
+.vertical-center {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.alignleft {
+  float: left;
+}
+.alignright {
+  float: right;
+}
