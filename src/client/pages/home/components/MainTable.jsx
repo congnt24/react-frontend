@@ -25,7 +25,7 @@ class MainTable extends Component {
                             <Card centered fluid onClick={(e) => {
                                 store.dispatch(push('/tour/' + id));
                             }}>
-                                <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png'/>
+                                <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXtvQ-_34Uj6Vjfe1QHllPvw0bp4zqRWjkcYdFZp5iPPjunRSM'/>
                                 <Card.Content>
                                     <Card.Header>{name}</Card.Header>
                                     <Card.Meta>

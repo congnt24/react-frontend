@@ -89,7 +89,7 @@
     "webpack-hot-middleware": "^2.22.2"
   },
   "scripts": {
-    "start:client": "webpack -p --config webpack/webpack.config.js",
+    "start:client": "webpack-dev-server --config webpack/webpack.config.js",
     "start:sv": "webpack -p --config webpack/webpack.server.config.js",
     "start:server": "NODE_ENV=development webpack --config webpack/webpack.server.config.js && node build/server.js",
     "build": "NODE_ENV=production babel-node src/index.js --server --client",
