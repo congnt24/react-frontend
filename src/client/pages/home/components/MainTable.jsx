@@ -9,8 +9,7 @@ class MainTable extends Component {
     constructor(props) {
         super(props);
         console.log(this.props.items, 'this.props.items');
-        
-        if (!this.props.items || this.props.items.length === 0) {
+        if ((isServer && (!this.props.items || this.props.items.length === 0)) || !isServer) {
             this.props.getItems()
         }
         // this.props.dispatch(fetchListItemAction)

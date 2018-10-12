@@ -10,7 +10,7 @@ class About extends Component {
     componentWillMount() {
         //Use for ssr saga
         // if (typeof window === 'undefined' || !window.__INITIAL_STATE__) {
-        this.props.dispatch(fetchBannerAction('home_slideshow'))
+        // this.props.dispatch(fetchBannerAction('home_slideshow'))
         // }
     }
 
@@ -22,7 +22,7 @@ class About extends Component {
                             {name: 'description', content: 'Description'}
                         ]}/>
                 <h1>This is About page</h1>
-                <BannerAboutContainer/>
+                {/*<BannerAboutContainer/>*/}
             </div>
         );
     }

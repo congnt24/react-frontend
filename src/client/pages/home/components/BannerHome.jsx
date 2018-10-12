@@ -28,7 +28,7 @@ function SamplePrevArrow(props) {
 class BannerHome extends React.Component {
     constructor(props) {
         super(props);
-        if (!this.props.banners || this.props.banners.length === 0) {
+        if ((isServer && (!this.props.banners || this.props.banners.length === 0)) || !isServer) {
             this.props.dispatch(fetchBannerAction('home_slideshow'))
         }
     }

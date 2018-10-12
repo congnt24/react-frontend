@@ -5,6 +5,7 @@
   "main": "client.js",
   "dependencies": {
     "@babel/core": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
     "axios": "^0.18.0",
     "bluebird": "^3.5.1",
     "express": "^4.16.3",
@@ -15,7 +16,9 @@
     "i18next-browser-languagedetector": "^2.2.3",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
+    "morgan": "^1.9.0",
     "prop-types": "^15.6.2",
+    "query-string": "^6.2.0",
     "react": "^16.4.1",
     "react-bootstrap": "^1.0.0-beta.1",
     "react-datepicker": "^1.6.0",
@@ -32,6 +35,7 @@
     "react-slick": "^0.23.1",
     "react-toastify": "^4.3.2",
     "redux": "^4.0.0",
+    "redux-devtools-extension": "^2.13.5",
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.3.0",
     "semantic-ui-react": "^0.82.5",
@@ -39,10 +43,7 @@
     "slick-carousel": "^1.8.1",
     "styled-components": "^3.4.9",
     "webpack": "^4.19.1",
-    "webpack-node-externals": "^1.7.2",
-    "morgan": "^1.9.0",
-    "@babel/polyfill": "^7.0.0",
-    "redux-devtools-extension": "^2.13.5"
+    "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -91,7 +92,7 @@
   "scripts": {
     "start:client": "webpack-dev-server --config webpack/webpack.config.js",
     "start:sv": "webpack -p --config webpack/webpack.server.config.js",
-    "start:server": "NODE_ENV=development webpack --config webpack/webpack.server.config.js && node build/server.js",
+    "start:server": "NODE_ENV=production webpack --config webpack/webpack.server.config.js && node build/server.js",
     "build": "NODE_ENV=production babel-node src/index.js --server --client",
     "start": "node build/server.js",
     "lint": "eslint ."
