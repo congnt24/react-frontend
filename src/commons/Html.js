@@ -27,7 +27,7 @@ class Html extends React.Component {
     };
 
     render() {
-        const {helmet, styles, scripts, app, children, initial_state} = this.props;
+        const {helmet, styles, scripts, app, children, redux_initial_state, initial_state} = this.props;
         return (
             <html className="no-js" lang="en">
             <head>
@@ -54,6 +54,9 @@ class Html extends React.Component {
             {/*<script*/}
             {/*dangerouslySetInnerHTML={{__html: `window.App=${serialize(app)}`}}*/}
             {/*/>*/}
+            <script
+                dangerouslySetInnerHTML={{__html: `window.__REDUX_INITIAL_STATE__ = ${serialize(redux_initial_state)}`}}
+            />
             <script
                 dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__ = ${serialize(initial_state)}`}}
             />

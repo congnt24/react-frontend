@@ -8,9 +8,7 @@ import configureStore from './redux/configureStore';
 import rootSaga from "./redux/rootSagas";
 // import queryString from 'query-string';
 require('../localization');
-const initialData = window.__INITIAL_STATE__ || {};
-let store = configureStore(initialData);
-console.log(initialData, 'initialData');
+let store = configureStore(window.__REDUX_INITIAL_STATE__ || {});
 import history from "../commons/history";
 store.runSaga(rootSaga);
 global['store'] = store;
@@ -40,7 +38,7 @@ async function onLocationChange(location, action) {
     currentLocation = location;
 
     const isInitialRender = !action;
-    global.isServer = isInitialRender;
+    window.isInitialRender = isInitialRender;
     console.log(isInitialRender, 'isInitialRender');
     
     try {
@@ -138,14 +136,14 @@ history.listen(onLocationChange);
 onLocationChange(currentLocation);
 
 
-let renderMethod = /*!!module.hot ? ReactDOM.render :*/ ReactDOM.hydrate;
-let render = (Component) => renderMethod(
-    <Provider store={store}>
-        <AppContainer>
-            <Component/>
-        </AppContainer>
-    </Provider>
-    , container);
+// let renderMethod = /*!!module.hot ? ReactDOM.render :*/ ReactDOM.hydrate;
+// let render = (Component) => renderMethod(
+//     <Provider store={store}>
+//         <AppContainer>
+//             <Component/>
+//         </AppContainer>
+//     </Provider>
+//     , container);
 
 // render(App);
 // Webpack Hot Module Replacement API

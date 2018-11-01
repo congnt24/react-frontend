@@ -12,7 +12,11 @@ global['parseResponse'] = function (data) {
     }
     throw new Error(data.message);
 };
-
+global['handleSSR'] = function (callback) {
+    if (typeof window === 'undefined' || !window.isInitialRender) {
+        callback();
+    }
+};
 global['isServer'] = !(
     typeof window !== 'undefined' &&
     window.document &&

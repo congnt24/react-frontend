@@ -89,7 +89,8 @@ app.get('*', (req, res, next) => {
 
         data.scripts = _.flatten(Array.from(scripts));
         data.styles = _.flatten(Array.from(css));
-        data.initial_state = store.getState();
+        data.redux_initial_state = store.getState();
+        data.initial_state = {isInitialRender: true};
         const html = renderToStaticMarkup(<Html {...data} />);
         res.status(200);
         res.send(`<!doctype html>${html}`);

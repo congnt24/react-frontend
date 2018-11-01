@@ -2,17 +2,15 @@ import React, {Component} from 'react';
 import {Grid, Segment, Image, Card, Icon, Rating, Label} from 'semantic-ui-react';
 import {push} from "react-router-redux";
 import SimplePagination from "../../../components/pagination/SimplePagination";
-import {fetchListItemAction} from "../duck/actions";
+import {fetchBannerAction, fetchListItemAction} from "../duck/actions";
 import FullPagination from "../../../components/pagination/FullPagination";
 
 class MainTable extends Component {
     constructor(props) {
         super(props);
-        console.log(this.props.items, 'this.props.items');
-        if ((isServer && (!this.props.items || this.props.items.length === 0)) || !isServer) {
+        handleSSR(() => {
             this.props.getItems()
-        }
-        // this.props.dispatch(fetchListItemAction)
+        });
     }
 
     render() {
@@ -24,7 +22,8 @@ class MainTable extends Component {
                             <Card centered fluid onClick={(e) => {
                                 store.dispatch(push('/tour/' + id));
                             }}>
-                                <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXtvQ-_34Uj6Vjfe1QHllPvw0bp4zqRWjkcYdFZp5iPPjunRSM'/>
+                                <Image
+                                    src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXtvQ-_34Uj6Vjfe1QHllPvw0bp4zqRWjkcYdFZp5iPPjunRSM'/>
                                 <Card.Content>
                                     <Card.Header>{name}</Card.Header>
                                     <Card.Meta>

@@ -28,9 +28,9 @@ function SamplePrevArrow(props) {
 class BannerHome extends React.Component {
     constructor(props) {
         super(props);
-        if ((isServer && (!this.props.banners || this.props.banners.length === 0)) || !isServer) {
+        handleSSR(() => {
             this.props.dispatch(fetchBannerAction('home_slideshow'))
-        }
+        });
     }
 
     render() {
@@ -59,6 +59,9 @@ class BannerHome extends React.Component {
                 {banners}
             </Slider>
         );
+    }
+    componentDidMount(){
+        // this.props.dispatch(fetchBannerAction('home_slideshow'))
     }
 }
 
