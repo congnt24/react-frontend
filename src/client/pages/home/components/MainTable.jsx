@@ -15,7 +15,7 @@ class MainTable extends Component {
 
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <Grid stackable columns={4}>
                     {this.props.items && this.props.items.map(({id, final_price, price, name, description, created_at}) => (
                         <Grid.Column key={id}>
@@ -43,7 +43,7 @@ class MainTable extends Component {
                 </Grid>
                 <br/>
                 <FullPagination/>
-            </div>
+            </React.Fragment>
         );
     }
 }

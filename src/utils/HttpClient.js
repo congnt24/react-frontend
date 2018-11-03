@@ -69,7 +69,7 @@ class HttpClientClass {
         return this.request('delete', url, Object.assign(options, {data: body}))
     }
 }
-let HttpClient = new HttpClientClass(`http://services.congnt24.site/`);
+let HttpClient = new HttpClientClass(`https://services.congnt24.site/`);
 let HttpClientPython = new HttpClientClass(`${consts.PY_SERVER}`);
 export {HttpClient, HttpClientPython};
 

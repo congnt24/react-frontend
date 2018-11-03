@@ -95,7 +95,8 @@
     "start:server": "NODE_ENV=production webpack --config webpack/webpack.server.config.js && node build/server.js",
     "build": "NODE_ENV=production babel-node src/index.js --server --client",
     "start": "node build/server.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "start:all": "NODE_ENV=production babel-node src/index.js --server --client && node build/server.js"
   },
   "author": "",
   "license": "ISC"

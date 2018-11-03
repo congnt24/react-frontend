@@ -5,11 +5,11 @@ import Footer from "../components/footer/Footer";
 class RootRouter extends Component {
     render() {
         return (
-            <div suppressHydrationWarning>
+            <React.Fragment>
                 <NavHeader/>
                 {renderRoutes(this.props.route.routes)}
                 <Footer/>
-            </div>
+            </React.Fragment>
         );
     }
 }

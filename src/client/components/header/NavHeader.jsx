@@ -46,44 +46,44 @@ class NavHeader extends Component {
                 <Menu.Item>
                     <Link to='/about'>About</Link>
                 </Menu.Item>
-                <Responsive
-                    as={Menu.Menu}
-                    position='right'
-                    minWidth={Responsive.onlyMobile.maxWidth}>
-                    {/*<Menu.Item
-                        position='right'>
-                        <Input
-                            icon='search'
-                            placeholder='Search...'/>
-                    </Menu.Item>*/}
-                    <Dropdown item text={t('language.change_language')}>
-                        <Dropdown.Menu>
-                            <Dropdown.Item value='en' onClick={this.onChangeLanguage}>{t('language.english')}</Dropdown.Item>
-                            <Dropdown.Item value='vi' onClick={this.onChangeLanguage}>{t('language.vietnamese')}</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                    {this.props.is_authenticated ? (
-                            <Dropdown item text={`${this.props.user_data.lastname} ${this.props.user_data.firstname}`}>
-                                <Dropdown.Menu>
-                                    <Dropdown.Item onClick={this.onLogOut}>{t('user.logout')}</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>)
-                        : ([<Menu.Item key='signIn' content={t('user.login')} onClick={this.onLogin}/>,
-                            <Menu.Item key='signUp' content={t('user.signup')} onClick={this.onSignUp}/>])}
+                {/*<Responsive*/}
+                    {/*as={Menu.Menu}*/}
+                    {/*position='right'*/}
+                    {/*minWidth={Responsive.onlyMobile.maxWidth}>*/}
+                    {/*/!*<Menu.Item*/}
+                        {/*position='right'>*/}
+                        {/*<Input*/}
+                            {/*icon='search'*/}
+                            {/*placeholder='Search...'/>*/}
+                    {/*</Menu.Item>*!/*/}
+                    {/*<Dropdown item text={t('language.change_language')}>*/}
+                        {/*<Dropdown.Menu>*/}
+                            {/*<Dropdown.Item value='en' onClick={this.onChangeLanguage}>{t('language.english')}</Dropdown.Item>*/}
+                            {/*<Dropdown.Item value='vi' onClick={this.onChangeLanguage}>{t('language.vietnamese')}</Dropdown.Item>*/}
+                        {/*</Dropdown.Menu>*/}
+                    {/*</Dropdown>*/}
+                    {/*{this.props.is_authenticated ? (*/}
+                            {/*<Dropdown item text={`${this.props.user_data.lastname} ${this.props.user_data.firstname}`}>*/}
+                                {/*<Dropdown.Menu>*/}
+                                    {/*<Dropdown.Item onClick={this.onLogOut}>{t('user.logout')}</Dropdown.Item>*/}
+                                {/*</Dropdown.Menu>*/}
+                            {/*</Dropdown>)*/}
+                        {/*: ([<Menu.Item key='signIn' content={t('user.login')} onClick={this.onLogin}/>,*/}
+                            {/*<Menu.Item key='signUp' content={t('user.signup')} onClick={this.onSignUp}/>])}*/}
 
-                </Responsive>
+                {/*</Responsive>*/}
 
-                <Responsive
-                    as={Menu.Menu}
-                    position='right'
-                    maxWidth={Responsive.onlyMobile.maxWidth}>
-                    <Dropdown item simple text='Menu' direction='right'>
-                        <Dropdown.Menu>
-                            <Dropdown.Item text='Sign In'/>
-                            <Dropdown.Item text='Sign Up'/>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                </Responsive>
+                {/*<Responsive*/}
+                    {/*as={Menu.Menu}*/}
+                    {/*position='right'*/}
+                    {/*maxWidth={Responsive.onlyMobile.maxWidth}>*/}
+                    {/*<Dropdown item simple text='Menu' direction='right'>*/}
+                        {/*<Dropdown.Menu>*/}
+                            {/*<Dropdown.Item text='Sign In'/>*/}
+                            {/*<Dropdown.Item text='Sign Up'/>*/}
+                        {/*</Dropdown.Menu>*/}
+                    {/*</Dropdown>*/}
+                {/*</Responsive>*/}
 
             </Menu>
         );

@@ -4,6 +4,7 @@
     "@babel/preset-react"
   ],
   "plugins": [
+    "react-loadable/babel",
     "dynamic-import-webpack",
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-syntax-import-meta",

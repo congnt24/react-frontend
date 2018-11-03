@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 class Layout extends Component {
     render() {
         return (
-            <div>
+            <React.Fragment>
                 {/*<div><p>breadcrumb {this.props.test_prop}: </p></div>*/}
                 {this.props.children}
-            </div>
+            </React.Fragment>
         );
     }
 }

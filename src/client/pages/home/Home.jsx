@@ -29,7 +29,7 @@ class Home extends Component {
                     <Divider/>
                 <MainTableContainer/>
                 </Segment>
-                {renderRoutes(this.props.route.routes)}
+                {/*{renderRoutes(this.props.route.routes)}*/}
             </Layout>
         );
     }

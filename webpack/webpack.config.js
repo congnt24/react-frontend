@@ -16,9 +16,12 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // const CompressionPlugin = require("compression-webpack-plugin");
+import { ReactLoadablePlugin } from 'react-loadable/webpack';
+
+
 
 let plugins = process.env.NODE_ENV !== 'production' ? [
-    // new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin(),
     // Sử dụng để hot reload resource
     new webpack.HotModuleReplacementPlugin(),
 ] : [];
@@ -37,14 +40,17 @@ module.exports = {
     },
     output: {
         //chunk js thành các file nhỏ, có thể thay hash = file_name để ko bị thay đổi mỗi khi build lại
-        filename: '[name].js',
-        chunkFilename: '[name].js',
         path: path.resolve('./build'),
+        filename: 'client.js',
+        chunkFilename: '[name].chunk.js',
         publicPath: "/"
     },
     plugins: [
         ...webpack_base_config.plugins,
         ...plugins,
+        new ReactLoadablePlugin({
+            filename: './build/react-loadable.json',
+        }),
         new MiniCssExtractPlugin(),
         new CleanWebpackPlugin(['build'], {
             root: process.cwd()

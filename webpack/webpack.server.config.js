@@ -51,6 +51,9 @@ module.exports = {
     },
 
     plugins: [
+        new webpack.optimize.LimitChunkCountPlugin({
+            maxChunks: 1,
+        }),
         ...webpack_base_config.plugins,
     ],
 };

@@ -1,3 +1,5 @@
+import AppServer from "../containers/AppServer";
+
 if (!global._babelPolyfill) {
     require("@babel/polyfill");
 }
@@ -17,6 +19,8 @@ import Html from "../commons/Html";
 import Helmet from 'react-helmet'
 import helmet from 'helmet'
 import _ from 'lodash'
+import {getBundles} from 'react-loadable/webpack';
+import stats from '../../build/react-loadable.json';
 
 const express = require('express');
 const port = process.env.PORT || 3000;
@@ -61,17 +65,17 @@ app.get('*', (req, res, next) => {
     global['store'] = store;
     let content = '';
     let context = {};
-
+    let modules = [];
     store.runSaga(rootSaga).done.then(() => {
         const data = {};
         content = renderToString(
-            <I18nextProvider i18n={i18n}>
+            <Loadable.Capture report={moduleName => modules.push(moduleName)}>
                 <Provider store={store}>
                     <StaticRouter location={req.url} context={context}>
-                        {renderRoutes(main_routes)}
+                        <AppServer/>
                     </StaticRouter>
                 </Provider>
-            </I18nextProvider>
+            </Loadable.Capture>
         );
         data.helmet = Helmet.renderStatic();
         data.children = content;
@@ -79,15 +83,20 @@ app.get('*', (req, res, next) => {
         const scripts = new Set();
         for (let key of Object.keys(assets)) {
             let asset = assets[key];
-            if (asset['js']) {
-                scripts.add(asset['js']);
-            }
-            if (asset['css']) {
-                css.add(asset['css']);
+            if (key != "") {
+                if (asset['js']) {
+                    scripts.add(asset['js']);
+                }
+                if (asset['css']) {
+                    css.add(asset['css']);
+                }
             }
         }
 
-        data.scripts = _.flatten(Array.from(scripts));
+        // let bundles = getBundles(stats, modules);
+        data.scripts = Array.from(scripts);
+
+        // data.scripts = _.flatten(Array.from(scripts));
         data.styles = _.flatten(Array.from(css));
         data.redux_initial_state = store.getState();
         data.initial_state = {isInitialRender: true};
@@ -96,15 +105,12 @@ app.get('*', (req, res, next) => {
         res.send(`<!doctype html>${html}`);
     });
 
-    console.log('aaaaa');
     content = renderToString(
-        <I18nextProvider i18n={i18n}>
-            <Provider store={store}>
-                <StaticRouter location={req.url} context={context}>
-                    {renderRoutes(main_routes)}
-                </StaticRouter>
-            </Provider>
-        </I18nextProvider>
+        <Provider store={store}>
+            <StaticRouter location={req.url} context={context}>
+                <AppServer/>
+            </StaticRouter>
+        </Provider>
     );
     if (context.status === 404) {
         res.status(404);

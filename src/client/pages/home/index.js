@@ -1,13 +1,13 @@
 /**
  * Created by congnt on 7/18/18.
  */
+
 "use strict";
 
-import Loading from "../../components/loading/Loading";
-import Loadable from "react-loadable";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {push} from "react-router-redux";
+import Home from "./Home";
 
 
 //Tạo ra các function cho this.pros
@@ -17,7 +17,4 @@ const mapDispatchToProps = (dispatch) => {
     }, dispatch);
     return {...actions, dispatch}
 };
-export default connect(state => state, mapDispatchToProps)(Loadable({
-    loader: () => import('./Home'),
-    loading: Loading
-}));
+export default connect(state => state, mapDispatchToProps)(Home);

@@ -42,43 +42,13 @@ class Html extends React.Component {
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css"/>
                 <link rel="stylesheet" type="text/css" charSet="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
                 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
-                {scripts.map(script => (
-                    <link key={script} rel="preload" href={script} as="script"/>
-                ))}
-                {styles.map(style => (
-                    <link key={style} rel="stylesheet" href={style}/>
-                ))}
+                {scripts.map(script => (<link key={script} rel="preload" href={script} as="script"/>))}
+                {styles.map(style => (<link key={style} rel="stylesheet" href={style}/>))}
             </head>
             <body>
-            <div id="root" suppressHydrationWarning dangerouslySetInnerHTML={{__html: children}}/>
-            {/*<script*/}
-            {/*dangerouslySetInnerHTML={{__html: `window.App=${serialize(app)}`}}*/}
-            {/*/>*/}
-            <script
-                dangerouslySetInnerHTML={{__html: `window.__REDUX_INITIAL_STATE__ = ${serialize(redux_initial_state)}`}}
-            />
-            <script
-                dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__ = ${serialize(initial_state)}`}}
-            />
-            {scripts.map(script => <script key={script} src={script}/>)}
-            {/*{config.analytics.googleTrackingId && (
-            <script
-              dangerouslySetInnerHTML={{
-                __html:
-                  'window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;' +
-                  `ga('create','${
-                    config.analytics.googleTrackingId
-                  }','auto');ga('send','pageview')`,
-              }}
-            />
-          )}
-          {config.analytics.googleTrackingId && (
-            <script
-              src="https://www.google-analytics.com/analytics.js"
-              async
-              defer
-            />
-          )}*/}
+            <div id="root" dangerouslySetInnerHTML={{__html: children}}/>
+            <script dangerouslySetInnerHTML={{__html: `window.__REDUX_INITIAL_STATE__= ${serialize(redux_initial_state)}`}}/>
+            {scripts.map(script => <script charSet="utf-8" key={script} src={script}/>)}
             </body>
             </html>
         );
