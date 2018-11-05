@@ -8,6 +8,7 @@ import createSagaMiddleware, {END} from 'redux-saga'
 import homeReducer from '../pages/home/duck/reducers';
 import aboutReducer from '../pages/about/duck/reducers';
 import userReducer from './user/reducers';
+import { reducer as responsiveReducer } from 'react-responsive-redux'
 
 export default function configureStore(initialState) {
     const sagaMiddleware = createSagaMiddleware();
@@ -17,7 +18,7 @@ export default function configureStore(initialState) {
         thunk,//We are using redux-thunk for using async actions
         routerMiddleware(history)
     ];
-    const reducers = {homeReducer, aboutReducer, userReducer};
+    const reducers = {homeReducer, aboutReducer, userReducer, responsive: responsiveReducer};
     const composedEnhancers = composeWithDevTools(
         applyMiddleware(...middleware),
         ...enhancers

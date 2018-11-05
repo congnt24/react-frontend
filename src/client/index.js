@@ -1,6 +1,6 @@
 import AppClient from "../containers/AppClient";
-
 require('../utils/prototype');
+import './initialize';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import history from "../commons/history";

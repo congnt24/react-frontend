@@ -21,7 +21,7 @@ import { ReactLoadablePlugin } from 'react-loadable/webpack';
 
 
 let plugins = process.env.NODE_ENV !== 'production' ? [
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     // Sử dụng để hot reload resource
     new webpack.HotModuleReplacementPlugin(),
 ] : [];

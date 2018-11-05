@@ -21,6 +21,7 @@ import helmet from 'helmet'
 import _ from 'lodash'
 import {getBundles} from 'react-loadable/webpack';
 import stats from '../../build/react-loadable.json';
+import { setMobileDetect, mobileParser } from 'react-responsive-redux'
 
 const express = require('express');
 const port = process.env.PORT || 3000;
@@ -33,22 +34,22 @@ import i18n from '../localization';
 let assets = require('../../build/assets.json');
 
 if (process.env.NODE_ENV === 'development') {
-//SETUP HMR express
-    const webpack = require('webpack');
-    const webpackConfig = require('../../webpack/webpack.config');
-    const compiler = webpack(webpackConfig);
-// webpack hmr
-    app.use(
-        require('webpack-dev-middleware')(compiler, {
-            noInfo: true,
-            publicPath: webpackConfig.output.publicPath
-        })
-    );
-    app.use(require('webpack-hot-middleware')(compiler, {
-        log: console.log,
-        path: "/__webpack_hmr",
-        heartbeat: 10 * 1000,
-    }));
+// //SETUP HMR express
+//     const webpack = require('webpack');
+//     const webpackConfig = require('../../webpack/webpack.config');
+//     const compiler = webpack(webpackConfig);
+// // webpack hmr
+//     app.use(
+//         require('webpack-dev-middleware')(compiler, {
+//             noInfo: true,
+//             publicPath: webpackConfig.output.publicPath
+//         })
+//     );
+//     app.use(require('webpack-hot-middleware')(compiler, {
+//         log: console.log,
+//         path: "/__webpack_hmr",
+//         heartbeat: 10 * 1000,
+//     }));
     app.use(express.static(path.resolve(process.cwd(), 'build'), {index: '_'}));
 } else {
     app.use(express.static(path.resolve(process.cwd(), 'build'), {index: '_'}));
@@ -62,7 +63,13 @@ app.use(logger('dev', {skip: (req, res) => res.statusCode < 400}));
 app.get('*', (req, res, next) => {
     // const branch = matchRoutes(main_rArray.from(outes, req.path);
     const store = configureStore();
-    global['store'] = store;
+    global.store = store;
+    var dispatch = store.dispatch;
+    // do our mobile detection
+    var mobileDetect = mobileParser(req);
+    // set mobile detection for our responsive store
+    dispatch(setMobileDetect(mobileDetect));
+
     let content = '';
     let context = {};
     let modules = [];

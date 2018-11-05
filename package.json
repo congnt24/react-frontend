@@ -28,6 +28,8 @@
     "react-loadable": "^5.4.0",
     "react-loading-overlay": "^0.3.0",
     "react-redux": "^5.0.7",
+    "react-responsive": "^6.0.0",
+    "react-responsive-redux": "^0.7.0",
     "react-router": "^4.3.1",
     "react-router-config": "^4.4.0-beta.1",
     "react-router-dom": "^4.3.1",
@@ -96,7 +98,7 @@
     "build": "NODE_ENV=production babel-node src/index.js --server --client",
     "start": "node build/server.js",
     "lint": "eslint .",
-    "start:all": "NODE_ENV=production babel-node src/index.js --server --client && node build/server.js"
+    "start:all": "NODE_ENV=development babel-node src/index.js --server --client && node build/server.js"
   },
   "author": "",
   "license": "ISC"
